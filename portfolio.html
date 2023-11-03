@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio</title>
+    <style>
+        /* Background Animation */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrollbars from appearing */
+            background: linear-gradient(45deg, #2196F3, #FF5722, #4CAF50, #FFC107); /* Gradient background */
+            background-size: 400% 400%; /* Large background size for animation */
+            animation: gradientBackground 15s linear infinite; /* Animation for the background */
+            text-align: center; /* Center-align content */
+        }
+
+        /* Tab Styles */
+        .tabs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            color: #fff;
+            width: 100px;
+            padding: 10px 0;
+        }
+
+        .tab {
+            margin: 10px 0;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border-top: 1px solid #444;
+            transition: background-color 0.3s; /* Hover effect */
+        }
+
+        .tab:hover {
+            background-color: #444; /* Hover color */
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+            color: #fff; /* Text color */
+            text-transform: uppercase; /* Uppercase text */
+            letter-spacing: 2px; /* Letter spacing for a stylish look */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for depth */
+        }
+
+        /* Education Table Styling */
+        table.education {
+            width: 80%; /* Center-align table within the page */
+            margin: 20px auto; /* Center-align the table */
+            background-color: rgba(255, 255, 255, 0.1); /* Table background color with transparency */
+            border: 1px solid #fff; /* Table border color */
+        }
+
+        th.education, td.education {
+            border: 1px solid #fff;
+            padding: 10px;
+            text-align: left;
+            color: #fff;
+        }
+
+        th.education {
+            background-color: #444;
+            color: #fff;
+        }
+
+        /* Style table rows on hover */
+        tr.education:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Bottom Content Styling */
+        .bottom-content {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        /* Home Section Styling */
+        #home {
+            display: block;
+        }
+
+        .image-slideshow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 300px; /* Set the height of the image slideshow */
+        }
+
+        .image-slideshow img {
+            max-width: 100%;
+            animation: slideImages 10s linear infinite; /* Adjust the duration as needed */
+        }
+
+        /* Certificates Section Styling */
+        #certificates {
+            display: none;
+        }
+
+        .certificate {
+            border: 1px solid #fff;
+            padding: 20px;
+            margin: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+        /* Add this CSS to style the document links */
+.document-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.document-item {
+    margin-bottom: 10px;
+}
+
+.document-item a {
+    text-decoration: none;
+    color: #007BFF; /* Link color */
+    display: block;
+    padding: 5px;
+    background-color: #fff; /* Background color for each link */
+    border: 1px solid #007BFF; /* Border color */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s; /* Hover effect */
+}
+
+.document-item a:hover {
+    background-color: #007BFF; /* Hover background color */
+    color: #fff; /* Hover text color */
+}
+
+
+        /* JavaScript for Tab Navigation */
+        function showContent(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        /* Animation Keyframes */
+        @keyframes gradientBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideImages {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+                z-index: 1;
+                animation-timing-function: ease-in;
+                animation-fill-mode: forwards;
+            }
+            25% {
+                transform: translateX(100%);
+                opacity: 0;
+                z-index: 0;
+                animation-timing-function: ease-out;
+                animation-fill-mode: forwards;
+            }
+            50% {
+                transform: translateX(100%);
+                opacity: 0;
+                z-index: 0;
+                animation-timing-function: ease-in;
+                animation-fill-mode: forwards;
+            }
+            75% {
+                transform: translateX(0);
+                opacity: 1;
+                z-index: 1;
+                animation-timing-function: ease-out;
+                animation-fill-mode: forwards;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+                z-index: 1;
+                animation-timing-function: ease-in;
+                animation-fill-mode: forwards;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <div class="tab" onclick="showContent('home')">Home</div>
+        <div class="tab" onclick="showContent('about')">About</div>
+        <div class="tab" onclick="showContent('education')">Education</div>
+        <div class="tab" onclick="showContent('certificates')">Certificates</div>
+        <div class="tab" onclick="showContent('documents')">Documents</div>
+    </div>
+
+    <div class="content">
+        <header>
+            <h1>Your Name</h1>
+        </header>
+
+        <section id="home">
+            <div class="image-slideshow">
+                <img src="image1.jpg" alt="Image 1">
+                <img src="image2.jpg" alt="Image 2">
+                <img src="image3.jpg" alt="Image 3">
+            </div>
+            <h2>Welcome to My Portfolio</h2>
+            <p>Thank you for visiting my portfolio. Here, you can learn more about me and my experiences. Feel free to explore the tabs above to get to know me better.</p>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div id="photo">
+                <img src="your-photo.jpg" alt="Your Photo">
+            </div>
+            <p id="description">
+                Your description goes here. Briefly introduce yourself and your skills.
+            </p>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <table class="education">
+                <tr class="education">
+                    <th class="education">Degree</th>
+                    <th class="education">School/University Name</th>
+                    <th class="education">Year of Graduation</th>
+                </tr>
+                <tr class="education">
+                    <td class="education">Bachelor of Science</td>
+                    <td class="education">University of Example</td>
+                    <td class="education">2022</td>
+                </tr>
+                <tr class="education">
+                    <td class="education">Master of Arts</td>
+                    <td class="education">Another University</td>
+                    <td class="education">2024</td>
+                </tr>
+            </table>
+        </section>
+        <section id="certificates">
+            <h2>Certificates</h2>
+            <div class="certificate">
+                <h3>Certificate Title 1</h3>
+                <p>Issuing Organization: Organization 1</p>
+                <p>Year of Certification: 2022</p>
+            </div>
+            <div class="certificate">
+                <h3>Certificate Title 2</h3>
+                <p>Issuing Organization: Organization 2</p>
+                <p>Year of Certification: 2023</p>
+            </div>
+            <!-- Add more certificate entries as needed -->
+        </section>
+        <section id="documents">
+            <h2>Documents</h2>
+            <ul class="document-list">
+                <li class="document-item">
+                    <a href="document1.pdf" target="_blank">Document 1</a>
+                </li>
+                <li class="document-item">
+                    <a href="document2.pdf" target="_blank">Document 2</a>
+                </li>
+                <!-- Add more document links as needed -->
+            </ul>
+        </section>
+        
+        
+
+        <!-- Other sections... -->
+
+    </div>
+
+    <div class="bottom-content">
+        <h2>Bottom Content</h2>
+        <p>This is additional content at the bottom of the screen.</p>
+    </div>
+
+    <script>
+        function showContent(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
